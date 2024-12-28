@@ -1,7 +1,11 @@
 ﻿
 #include <iostream>
+#include <windows.h>
+#include "MenuHelper.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
+    MenuHelper::mainMenu();
 }
