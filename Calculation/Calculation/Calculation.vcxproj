@@ -129,12 +129,23 @@
   <ItemGroup>
     <ClCompile Include="Calculation.cpp" />
     <ClCompile Include="ConsoleHelper.cpp" />
+    <ClCompile Include="Engineering.cpp" />
+    <ClCompile Include="LargeNumbers.cpp" />
     <ClCompile Include="MenuHelper.cpp" />
+    <ClCompile Include="Programmer.cpp" />
     <ClCompile Include="Standard.cpp" />
+    <ClCompile Include="String.cpp" />
+    <ClCompile Include="Trigonometry.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleHelper.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="Engineering.h" />
+    <ClInclude Include="LargeNumbers.h" />
     <ClInclude Include="MenuHelper.h" />
+    <ClInclude Include="Programmer.h" />
+    <ClInclude Include="String.h" />
+    <ClInclude Include="Trigonometry.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

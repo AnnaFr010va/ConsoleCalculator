@@ -1,6 +1,7 @@
-﻿  Calculation.cpp
-  ConsoleHelper.cpp
+﻿  Engineering.cpp
   MenuHelper.cpp
   Standard.cpp
+  Trigonometry.cpp
   Создание кода...
+  LINK : не найден или не выполнена сборка D:\PROJECTS_C\ConsoleCalculator\Calculation\x64\Debug\Calculation.exe при последней инкрементной компоновке; выполняется полная компоновка
   Calculation.vcxproj -> D:\PROJECTS_C\ConsoleCalculator\Calculation\x64\Debug\Calculation.exe
