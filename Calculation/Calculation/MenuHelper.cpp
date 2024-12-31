@@ -3,7 +3,9 @@
 #include "Engineering.h"
 #include "Trigonometry.h"
 #include "String.h"
+#include "Programmer.h"
 #include <string>
+#include <limits>
 
 double getInputValue()
 {
@@ -77,7 +79,13 @@ void MenuHelper::mainMenu()
         }break;
         case 4: {
             ConsoleHelper::printLine("Вы выбрали 4 - программист: ");
-            /*MenuHelper::programmerMenu();*/
+            Programmer programmer;
+            try {
+                programmer.getMenu();
+            }
+            catch (...) {
+                std::cout << "Выход из режима разработчика" << std::endl;
+            }
             system("pause");
         }break;
         case 5: {
@@ -481,7 +489,7 @@ void MenuHelper::stringMenu()
             ConsoleHelper::printLine("Вы выбрали 1 - подсчёт слов: ");
             std::string message;
             std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            /*std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');*/
             std::cout << "Введите строку: " << std::endl;
             std::getline(std::cin, message);
             std::cout << String::countOfElem(message) << std::endl;
@@ -491,7 +499,7 @@ void MenuHelper::stringMenu()
             ConsoleHelper::printLine("Вы выбрали 2 - подсчёт гласных: ");
             std::string message;
             std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            /*std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');*/
             std::cout << "Введите строку: " << std::endl;
             std::getline(std::cin, message);
             std::cout << String::countOfVowels(message) << std::endl;
