@@ -1,10 +1,9 @@
-﻿  Calculation.cpp
-  ConsoleHelper.cpp
-  MenuHelper.cpp
+﻿  MenuHelper.cpp
+D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\StringMode.h(85,24): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  (компиляция исходного файла "MenuHelper.cpp")
+  
   Programmer.cpp
+  Trigonometry.cpp
   Создание кода...
-D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\Programmer.h(211,1): warning C4715: Programmer::validate_menu_choice: значение возвращается не при всех путях выполнения
-D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\Programmer.h(158,1): warning C4715: Programmer::initConvertation: значение возвращается не при всех путях выполнения
-D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\Programmer.h(232,1): warning C4715: Programmer::getBitwiseResult: значение возвращается не при всех путях выполнения
-  LINK : не найден или не выполнена сборка D:\PROJECTS_C\ConsoleCalculator\Calculation\x64\Debug\Calculation.exe при последней инкрементной компоновке; выполняется полная компоновка
+D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\Programmer.h(157,1): warning C4715: Programmer::getBitwiseResult: значение возвращается не при всех путях выполнения
   Calculation.vcxproj -> D:\PROJECTS_C\ConsoleCalculator\Calculation\x64\Debug\Calculation.exe

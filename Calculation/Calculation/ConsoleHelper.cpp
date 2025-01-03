@@ -1,4 +1,5 @@
 #include "ConsoleHelper.h"
+#include <tuple>
 
 
 void ConsoleHelper::printLine(const std::string& message)
@@ -7,6 +8,57 @@ void ConsoleHelper::printLine(const std::string& message)
     std::cout << std::endl;
 }
 
+std::string ConsoleHelper::inputSingleString()
+{
+    std::string message;
+    std::cin.clear();
+    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+    std::cout << "¬ведите строку: " << std::endl;
+    std::getline(std::cin, message);
+    return message;
+}
+std::tuple<std::string, std::string> ConsoleHelper::inputTwoStrings()
+{
+    std::string message1;
+    std::cin.clear();
+    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+    std::cout << "¬ведите исходную строку: " << std::endl;
+    std::getline(std::cin, message1);
+    std::string message2;
+    std::cout << "¬ведите строку2: " << std::endl;
+    std::getline(std::cin, message2);
+    return std::make_tuple(message1, message2);
+}
+std::tuple<std::string, char, char> ConsoleHelper::inputStringAndChars()
+{
+    std::string text;
+    std::cin.clear();
+    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+    std::cout << "¬ведите строку: " << std::endl;
+    std::getline(std::cin, text);
+    char target;
+    std::cout << "¬ведите удал€емый символ: " << std::endl;
+    std::cin >> target;
+    char replacement;
+    std::cout << "¬ведите замещающий символ: " << std::endl;
+    std::cin >> replacement;
+    return std::make_tuple(text, target, replacement);
+}
+std::tuple<std::string, std::string, std::string> ConsoleHelper::inputThreeStrings()
+{
+    std::string text;
+    std::cin.clear();
+    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+    std::cout << "¬ведите исходную строку или текст: " << std::endl;
+    std::getline(std::cin, text);
+    std::string target;
+    std::cout << "¬ведите строку 1: " << std::endl;
+    std::getline(std::cin, target);
+    std::string replacement;
+    std::cout << "¬ведите строку 2: " << std::endl;
+    std::getline(std::cin, replacement);
+    return std::make_tuple(text, target, replacement);
+}
 
 double ConsoleHelper::inputDouble(const std::string& message)
 {
@@ -78,4 +130,44 @@ double ConsoleHelper::inputBool(const std::string& message)
     } while (!validInput);
 
     return number;
+}
+
+void ConsoleHelper::setColor(int textColor)
+{
+    std::cout << "\033[" << textColor << "m";
+}
+
+void ConsoleHelper::resetColor() { std::cout << "\033[0m"; }
+
+std::string ConsoleHelper::getColorString(std::string str, std::string color) {
+    std::string f{ "\x1b[" };
+    std::string m{ "m" };
+    std::string l{ "\x1b[0m" };
+    std::string res = { f + color + m + str + l };
+    return res;
+}
+
+void ConsoleHelper::printTitle(std::string str, int color) {
+    ConsoleHelper::setColor(color);
+    std::cout << str << std::endl;
+    ConsoleHelper::resetColor();
+}
+bool ConsoleHelper::IsNumber(const std::string& s)
+{
+    return !s.empty() && s.find_first_not_of("-.0123456789") == std::string::npos;
+}
+std::tuple<std::string, std::string> ConsoleHelper::inputTwoNumbers()
+{
+    std::string num1;
+    std::cin.clear();
+    std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+    std::cout << "¬ведите первое число: " << std::endl;
+    std::getline(std::cin, num1);
+    if (!ConsoleHelper::IsNumber(num1)) {
+        throw "¬веденное значение не €вл€етс€ числом";
+    }
+    std::string num2;
+    std::cout << "¬ведите второе число: " << std::endl;
+    std::getline(std::cin, num2);
+    return std::make_tuple(num1, num2);
 }
