@@ -402,7 +402,7 @@ void MenuHelper::programmerMenu()
 
 void MenuHelper::largeNumbersMenu()
 {
-    /*while (true)
+    while (true)
     {
         system("cls");
         ConsoleHelper::printTitle("Арифметика больших чисел", 35);
@@ -414,8 +414,63 @@ void MenuHelper::largeNumbersMenu()
         ConsoleHelper::printLine("0 - выход: ");
         int choice{};
         std::cin >> choice;
+        switch (choice)
+        {
+        case 1: {
+            ConsoleHelper::printLine("Вы выбрали 1 - сложение: ");
+            try {
+                std::tuple<std::string, std::string> input_tuple = ConsoleHelper::inputTwoNumbers();
+                ConsoleHelper::printResult(LargeNumbers::addLargeNumbers(std::get<0>(input_tuple), std::get<1>(input_tuple)));
+            }
+            catch (const char* error_message) {
+                std::cout << error_message << std::endl;
+            }
+            system("pause");
+        }break;
+        case 2: {
+            ConsoleHelper::printLine("Вы выбрали 2 - вычитание: ");
+            try {
+                std::tuple<std::string, std::string> input_tuple = ConsoleHelper::inputTwoNumbers();
+                ConsoleHelper::printResult(LargeNumbers::subtractLargeNumbers(std::get<0>(input_tuple), std::get<1>(input_tuple)));
+            }
+            catch (const char* error_message) {
+                std::cout << error_message << std::endl;
+            }
+            system("pause");
+        }break;
+        case 3: {
+            ConsoleHelper::printLine("Вы выбрали 3 - умножение: ");
+            try {
+                std::tuple<std::string, std::string> input_tuple = ConsoleHelper::inputTwoNumbers();
+                ConsoleHelper::printResult(LargeNumbers::multiplyLargeNumbers(std::get<0>(input_tuple), std::get<1>(input_tuple)));
+            }
+            catch (const char* error_message) {
+                std::cout << error_message << std::endl;
+            }
+            system("pause");
+        }break;
+        case 4: {
+            ConsoleHelper::printLine("Вы выбрали 4 - целочисленное деление: ");
+            try {
+                std::tuple<std::string, std::string> input_tuple = ConsoleHelper::inputTwoNumbers();
+                ConsoleHelper::printResult(LargeNumbers::divideLargeNumbers(std::get<0>(input_tuple), std::get<1>(input_tuple)));
+            }
+            catch (const char* error_message) {
+                std::cout << error_message << std::endl;
+            }
+            system("pause");
+        }break;
+        case 0: {
+            return;
+        }break;
+        default: {
+            ConsoleHelper::printLine("Ошибка: ");
+            system("pause");
+        };
+
+        }
        
-    }*/
+    }
 
 
 }

@@ -1,9 +1,15 @@
-﻿  MenuHelper.cpp
+﻿  LargeNumbers.cpp
+D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\LargeNumbers.cpp(14,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\LargeNumbers.cpp(14,34): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\LargeNumbers.cpp(40,11): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\LargeNumbers.cpp(40,34): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\LargeNumbers.cpp(65,16): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\LargeNumbers.cpp(69,20): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  MenuHelper.cpp
 D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\StringMode.h(85,24): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
   (компиляция исходного файла "MenuHelper.cpp")
   
-  Programmer.cpp
-  Trigonometry.cpp
   Создание кода...
 D:\PROJECTS_C\ConsoleCalculator\Calculation\Calculation\Programmer.h(157,1): warning C4715: Programmer::getBitwiseResult: значение возвращается не при всех путях выполнения
+  LINK : не найден или не выполнена сборка D:\PROJECTS_C\ConsoleCalculator\Calculation\x64\Debug\Calculation.exe при последней инкрементной компоновке; выполняется полная компоновка
   Calculation.vcxproj -> D:\PROJECTS_C\ConsoleCalculator\Calculation\x64\Debug\Calculation.exe
