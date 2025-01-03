@@ -2,10 +2,14 @@
 #include "Standard.cpp"
 #include "Engineering.h"
 #include "Trigonometry.h"
-#include "String.h"
+#include "StringMode.h"
 #include "Programmer.h"
+#include "ConsoleHelper.h"
+#include "LargeNumbers.h"
 #include <string>
 #include <limits>
+#include <tuple>
+using namespace Constants;
 
 double getInputValue()
 {
@@ -79,13 +83,7 @@ void MenuHelper::mainMenu()
         }break;
         case 4: {
             ConsoleHelper::printLine("Вы выбрали 4 - программист: ");
-            Programmer programmer;
-            try {
-                programmer.getMenu();
-            }
-            catch (...) {
-                std::cout << "Выход из режима разработчика" << std::endl;
-            }
+            MenuHelper::programmerMenu();
             system("pause");
         }break;
         case 5: {
@@ -95,6 +93,7 @@ void MenuHelper::mainMenu()
         }break;
         case 6: {
             ConsoleHelper::printLine("Вы выбрали 6 - работа с большими числами: ");
+            MenuHelper::largeNumbersMenu();
             system("pause");
         }break;
         case 0: {
@@ -353,108 +352,38 @@ void MenuHelper::trigonometryMenu()
 }
 
 
-//void MenuHelper::programmerMenu()
-//{
-//    while (true)
-//    {
-//        system("cls");
-//        ConsoleHelper::printLine("Выберите операцию: ");
-//        ConsoleHelper::printLine("1 - битовый сдвиг вправо>>: ");
-//        ConsoleHelper::printLine("2 - битовый сдвиг вдево<<: ");
-//        ConsoleHelper::printLine("3 - перевод из одной системы счисления в другую: ");
-//        /*ConsoleHelper::printLine("4 - натуральный логарифм по основанию x: ");
-//        ConsoleHelper::printLine("5 - десятичный логарифм по основанию x: ");
-//        ConsoleHelper::printLine("6 - модуль x: ");*/
-//        ConsoleHelper::printLine("0 - выход: ");
-//        int choice{};
-//        std::cin >> choice;
-//        switch (choice)
-//        {
-//        case 1: {
-//            ConsoleHelper::printLine("Вы выбрали 1 - x^y: ");
-//            double x = ConsoleHelper::inputDouble("Введите x: ");
-//            double y = ConsoleHelper::inputDouble("Введите y: ");
-//            std::cout << Engineering<double>::powerXY(x, y) << std::endl;
-//            system("pause");
-//        }break;
-//        case 2: {
-//            ConsoleHelper::printLine("Вы выбрали 2 - корень квадратный из x: ");
-//            double x = ConsoleHelper::inputDouble("Введите x: ");
-//            std::cout << Engineering<double>::sqrtX(x) << std::endl;
-//            system("pause");
-//        }break;
-//        case 3: {
-//            ConsoleHelper::printLine("Вы выбрали 3 - логарифм x по основанию y: ");
-//            double x = ConsoleHelper::inputDouble("Введите x: ");
-//            double y = ConsoleHelper::inputDouble("Введите y: ");
-//            std::cout << Engineering<double>::logXY(x, y) << std::endl;
-//            system("pause");
-//        }break;
-//        /*case 4: {
-//            ConsoleHelper::printLine("Вы выбрали 4 - логарифм x по основанию y: ");
-//            double x = ConsoleHelper::inputDouble("Введите x: ");
-//            std::cout << Engineering<double>::lnX(x) << std::endl;
-//            system("pause");
-//        }break;
-//        case 5: {
-//            ConsoleHelper::printLine("Вы выбрали 5 - логарифм x по основанию y: ");
-//            double x = ConsoleHelper::inputDouble("Введите x: ");
-//            std::cout << Engineering<double>::logDecX(x) << std::endl;
-//            system("pause");
-//        }break;
-//        case 6: {
-//            ConsoleHelper::printLine("Вы выбрали 6 - модуль x: ");
-//            double x = ConsoleHelper::inputDouble("Введите x: ");
-//            std::cout << Engineering<double>::absX(x) << std::endl;
-//            system("pause");
-//        }break;*/
-//        case 0: {
-//            return;
-//        }break;
-//        default: {
-//            ConsoleHelper::printLine("Ошибка: ");
-//            system("pause");
-//        };
-//
-//        }
-//    }
-//
-//
-//}
-
-void MenuHelper::largeNumbersMenu()
+void MenuHelper::programmerMenu()
 {
     while (true)
     {
         system("cls");
+        ConsoleHelper::printTitle("Режим программирования", 35);
         ConsoleHelper::printLine("Выберите операцию: ");
-        ConsoleHelper::printLine("1 - сложение: ");
-        ConsoleHelper::printLine("2 - вычитание: ");
-        ConsoleHelper::printLine("3 - умножение: ");
-        ConsoleHelper::printLine("4 - целочисленное деление: ");
+        ConsoleHelper::printLine("1 - перевод из одной системы счисления в другую: ");
+        ConsoleHelper::printLine("2 - бинарные операции: ");
         ConsoleHelper::printLine("0 - выход: ");
         int choice{};
         std::cin >> choice;
         switch (choice)
         {
         case 1: {
-            ConsoleHelper::printLine("Вы выбрали 1 - сложение: ");
-
+            ConsoleHelper::printLine("Вы выбрали 1 - перевод из одной системы счисления в другую: ");
+            try {
+                ConsoleHelper::printResult(Programmer::initConvertation());
+            }
+            catch (const char* error_message) {
+                std::cout << error_message << std::endl;
+            }
             system("pause");
         }break;
         case 2: {
-            ConsoleHelper::printLine("Вы выбрали 2 - вычитание: ");
-
-            system("pause");
-        }break;
-        case 3: {
-            ConsoleHelper::printLine("Вы выбрали 3 - умножение: ");
-
-            system("pause");
-        }break;
-        case 4: {
-            ConsoleHelper::printLine("Вы выбрали 4 - целочисленное деление: ");
-
+            ConsoleHelper::printLine("Вы выбрали 2 - бинарные операции: ");
+            try {
+                ConsoleHelper::printResult(Programmer::initBitwise());
+            }
+            catch (const char* error_message) {
+                std::cout << error_message << std::endl;
+            }
             system("pause");
         }break;
         case 0: {
@@ -467,6 +396,28 @@ void MenuHelper::largeNumbersMenu()
 
         }
     }
+
+
+}
+
+void MenuHelper::largeNumbersMenu()
+{
+    /*while (true)
+    {
+        system("cls");
+        ConsoleHelper::printTitle("Арифметика больших чисел", 35);
+        ConsoleHelper::printLine("Выберите операцию: ");
+        ConsoleHelper::printLine("1 - сложение: ");
+        ConsoleHelper::printLine("2 - вычитание: ");
+        ConsoleHelper::printLine("3 - умножение: ");
+        ConsoleHelper::printLine("4 - целочисленное деление: ");
+        ConsoleHelper::printLine("0 - выход: ");
+        int choice{};
+        std::cin >> choice;
+       
+    }*/
+
+
 }
 
 void MenuHelper::stringMenu()
@@ -474,12 +425,19 @@ void MenuHelper::stringMenu()
     while (true)
     {
         system("cls");
+        ConsoleHelper::printTitle("Режим строкового калькулятора", 35);
         ConsoleHelper::printLine("Выберите операцию: ");
         ConsoleHelper::printLine("1 - подсчёт слов: ");
         ConsoleHelper::printLine("2 - подсчёт гласных: ");
         ConsoleHelper::printLine("3 - подсчёт согласных: ");
         ConsoleHelper::printLine("4 - конкатенация: ");
         ConsoleHelper::printLine("5 - замена символа: ");
+        ConsoleHelper::printLine("6 - замена слова: ");
+        ConsoleHelper::printLine("7 - удаление слова в тексте: ");
+        ConsoleHelper::printLine("8 - подсчёт длины строки: ");
+        ConsoleHelper::printLine("9 - сравнение строк: ");
+        ConsoleHelper::printLine("10 - словарь встречаемости всех слов в тексте: ");
+        ConsoleHelper::printLine("11 - поиск элемента в тексте: ");
         ConsoleHelper::printLine("0 - выход: ");
         int choice{};
         std::cin >> choice;
@@ -487,37 +445,77 @@ void MenuHelper::stringMenu()
         {
         case 1: {
             ConsoleHelper::printLine("Вы выбрали 1 - подсчёт слов: ");
-            std::string message;
-            std::cin.clear();
-            /*std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');*/
-            std::cout << "Введите строку: " << std::endl;
-            std::getline(std::cin, message);
-            std::cout << String::countOfElem(message) << std::endl;
+            std::string message = ConsoleHelper::inputSingleString();
+            ConsoleHelper::printResult(StringMode::countOfElem(message));
             system("pause");
         }break;
         case 2: {
             ConsoleHelper::printLine("Вы выбрали 2 - подсчёт гласных: ");
-            std::string message;
-            std::cin.clear();
-            /*std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');*/
-            std::cout << "Введите строку: " << std::endl;
-            std::getline(std::cin, message);
-            std::cout << String::countOfVowels(message) << std::endl;
+            std::string message = ConsoleHelper::inputSingleString();
+            ConsoleHelper::printResult(StringMode::countOfLetters(message, Constants::vowels));
             system("pause");
         }break;
         case 3: {
             ConsoleHelper::printLine("Вы выбрали 3 - подсчёт согласных: ");
-
+            std::string message = ConsoleHelper::inputSingleString();
+            ConsoleHelper::printResult(StringMode::countOfLetters(message, Constants::consonants));
             system("pause");
         }break;
         case 4: {
             ConsoleHelper::printLine("Вы выбрали 4 - конкатенация: ");
-
+            std::tuple<std::string, std::string> message_tuple = ConsoleHelper::inputTwoStrings();
+            ConsoleHelper::printResult(StringMode::concatenate(std::get<0>(message_tuple), std::get<1>(message_tuple)));
             system("pause");
         }break;
         case 5: {
             ConsoleHelper::printLine("Вы выбрали 5 - замена символа: ");
-
+            std::tuple<std::string, char, char> message_tuple = ConsoleHelper::inputStringAndChars();
+            ConsoleHelper::printResult(StringMode::replaceChar(std::get<0>(message_tuple), std::get<1>(message_tuple), std::get<2>(message_tuple)));
+            system("pause");
+        }break;
+        case 6: {
+            ConsoleHelper::printLine("Вы выбрали 6 - замена слова: ");
+            std::tuple<std::string, std::string, std::string> message_tuple = ConsoleHelper::inputThreeStrings();
+            std::tuple<std::string, int> result_tuple = StringMode::replaceWord(std::get<0>(message_tuple), std::get<1>(message_tuple), std::get<2>(message_tuple));
+            std::string text = std::get<0>(result_tuple);
+            ConsoleHelper::printResult(text);
+            system("pause");
+        }break;
+        case 7: {
+            ConsoleHelper::printLine("Вы выбрали 7 - удаление слова в тексте: ");
+            std::tuple<std::string, std::string> message_tuple = ConsoleHelper::inputTwoStrings();
+            ConsoleHelper::printResult(StringMode::deleteWord(std::get<0>(message_tuple), std::get<1>(message_tuple)));
+            system("pause");
+        }break;
+        case 8: {
+            ConsoleHelper::printLine("Вы выбрали 8 - подсчёт длины строки: ");
+            std::string message = ConsoleHelper::inputSingleString();
+            ConsoleHelper::printResult(StringMode::getStringLength(message));
+            system("pause");
+        }break;
+        case 9: {
+            ConsoleHelper::printLine("Вы выбрали 9 - сравнение строк: ");
+            std::tuple<std::string, std::string> message_tuple = ConsoleHelper::inputTwoStrings();
+            ConsoleHelper::printResult(StringMode::compareWords(std::get<0>(message_tuple), std::get<1>(message_tuple)));
+            system("pause");
+        }break;
+        case 10: {
+            ConsoleHelper::printLine("Вы выбрали 10 - словарь встречаемости всех слов в тексте: ");
+            std::string message = ConsoleHelper::inputSingleString();
+            std::map< std::string, unsigned > message_map = StringMode::getMapOfElem(message);
+            ConsoleHelper::printResult("");
+            ConsoleHelper::print_map(message_map);
+            system("pause");
+        }break;
+        case 11: {
+            ConsoleHelper::printLine("Вы выбрали 11 - поиск элемента в тексте: ");
+            std::tuple<std::string, std::string> message_tuple = ConsoleHelper::inputTwoStrings();
+            std::string str1 = std::get<1>(message_tuple);
+            std::string str2 = ConsoleHelper::getColorString(str1, "33");
+            std::tuple<std::string, int> result_tuple = StringMode::replaceWord(std::get<0>(message_tuple), str1, str2);
+            std::cout << std::get<0>(result_tuple) << std::endl;
+            int count = std::get<1>(result_tuple);
+            ConsoleHelper::printResult(count);
             system("pause");
         }break;
         case 0: {
